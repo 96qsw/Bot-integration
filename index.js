@@ -5,12 +5,10 @@ const path = require('path');
 
 dotenv.config();
 
-// ========== PARTIE DÉPLOIEMENT DES COMMANDES ==========
 async function deployCommands() {
   const commands = [];
   const commandsPath = path.join(__dirname, 'commands');
   
-  // Vérifier si le dossier commands existe
   if (!fs.existsSync(commandsPath)) {
     console.log('❌ Dossier "commands" non trouvé !');
     return false;
