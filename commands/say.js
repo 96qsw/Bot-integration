@@ -14,24 +14,37 @@ module.exports = {
         .setDescription('Le message à répéter')
         .setRequired(true)
     )
-    .setContexts(0, 1, 2)        
+    .addIntegerOption(option =>
+      option.setName('count')
+        .setDescription('Nombre de fois où le message sera envoyé (par défaut : 1)')
+        .setMinValue(1)
+        .setMaxValue(10)
+    )
+    .setContexts(0, 1, 2)
     .setIntegrationTypes(0, 1),
 
   async execute(interaction) {
     const useEmbed = interaction.options.getBoolean('embed');
     const message = interaction.options.getString('message');
+    const count = interaction.options.getInteger('count') || 1;
 
-    if (useEmbed) {
-      
-      const embed = new EmbedBuilder()
-        .setColor(0x23272A)       
-        .setDescription(message)
-      
+    for (let i = 0; i < count; i++) {
+      if (useEmbed) {
+        const embed = new EmbedBuilder()
+          .setColor(0x23272A)
+          .setDescription(message);
 
-      await interaction.reply({ embeds: [embed] });
+        await interaction.channel.send({ embeds: [embed] });
+      } else {
+        await interaction.channel.send(message);
+      }
+    }
+
+    // Répond à l'interaction pour éviter que Discord ne considère la commande comme non répondue
+    if (count === 1) {
+      await interaction.reply({ content: 'Message envoyé.', ephemeral: true });
     } else {
-      // Message en texte normal
-      await interaction.reply(message);
+      await interaction.reply({ content: `${count} messages envoyés.`, ephemeral: true });
     }
   },
 };
