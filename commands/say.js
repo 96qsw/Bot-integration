@@ -28,7 +28,7 @@ module.exports = {
     const message = interaction.options.getString('message');
     const count = interaction.options.getInteger('count') || 1;
 
-    // Utilise deferReply pour éviter les timeouts si l'envoi prend du temps
+
     await interaction.deferReply({ ephemeral: true });
 
     for (let i = 0; i < count; i++) {
