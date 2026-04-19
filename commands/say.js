@@ -43,7 +43,7 @@ module.exports = {
       }
     }
 
-    // Confirme l'envoi
+   
     await interaction.editReply({
       content: `${count} message${count > 1 ? 's' : ''} ${count > 1 ? 'ont été' : 'a été'} envoyé${count > 1 ? 's' : ''}.`,
     });
