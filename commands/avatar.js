@@ -15,7 +15,6 @@ module.exports = {
   async execute(interaction) {
     const target = interaction.options.getUser('user');
 
-    // URL de l'avatar en haute qualité
     const avatarURL = target.displayAvatarURL({ extension: 'png', size: 4096 });
 
 
