@@ -24,7 +24,6 @@ module.exports = {
       });
     }
 
-    // Liens d'installation
     const serverInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot%20applications.commands&permissions=0`;
 
     const userInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=applications.commands&integration_type=1`;
