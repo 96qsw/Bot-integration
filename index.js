@@ -54,7 +54,6 @@ async function deployCommands() {
   }
 }
 
-// ========== PARTIE CLIENT BOT ==========
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
@@ -63,7 +62,6 @@ client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'commands');
 
-// Charger les commandes pour le bot
 if (fs.existsSync(commandsPath)) {
   const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
