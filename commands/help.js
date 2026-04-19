@@ -21,9 +21,6 @@ module.exports = {
         `**Infos**\n` +
         `\`hack\`\n\n` +
 
-        `**Tools**\n` +
-        `\`downrole\` | \`email-info\` | \`ip-info\` | \`token-info\`\n\n` +
-
         `**Utiles**\n` +
         `\`avatar\` | \`banner\` | \`bio\` | \`calcul\` | \`decode\` | \`encode\` | \`botlink\` | \`ping\` | \`profile\` | \`say\`\n\n` +
 
