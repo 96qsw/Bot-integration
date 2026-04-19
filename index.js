@@ -118,10 +118,9 @@ async function start() {
   }
 }
 
-// Lancer le tout
+
 start();
 
-// Gestion des erreurs non capturées
 process.on('unhandledRejection', error => {
   console.error('❌ Erreur non gérée:', error);
 });
