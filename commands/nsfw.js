@@ -22,10 +22,6 @@ module.exports = {
   async execute(interaction) {
     const type = interaction.options.getString('type');
 
-    // Vérifie si la commande est utilisée dans un salon NSFW
-    if (!interaction.channel.nsfw) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: false });
-    }
 
     const asciiLines = [
       `= Contenu NSFW de type : ${type}`,
