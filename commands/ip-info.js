@@ -17,7 +17,6 @@ module.exports = {
 
     const ip = interaction.options.getString('ip');
 
-    // Validation basique de l'IP
     const ipRegex = /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
     if (!ipRegex.test(ip)) {
       return interaction.editReply({
