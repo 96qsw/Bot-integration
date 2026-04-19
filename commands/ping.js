@@ -8,7 +8,7 @@ module.exports = {
     .setIntegrationTypes(0, 1),
 
   async execute(interaction) {
-    const sent = await interaction.deferReply({ ephemeral: true, fetchReply: true });
+    const sent = await interaction.deferReply({ ephemeral: true, fetchReply: false });
 
     const latency = sent.createdTimestamp - interaction.createdTimestamp;
 
