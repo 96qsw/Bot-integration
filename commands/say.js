@@ -40,7 +40,7 @@ module.exports = {
       }
     }
 
-    // Répond à l'interaction pour éviter que Discord ne considère la commande comme non répondue
+  
     if (count === 1) {
       await interaction.reply({ content: 'Message envoyé.', ephemeral: true });
     } else {
