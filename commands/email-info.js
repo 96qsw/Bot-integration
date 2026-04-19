@@ -27,7 +27,7 @@ module.exports = {
 
     const domain = email.split('@')[1];
 
-    // Appels API en parallèle
+  
     let disifyData = null;
     let mxValid = false;
     let dnsValid = false;
