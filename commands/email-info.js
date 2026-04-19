@@ -17,7 +17,7 @@ module.exports = {
 
     const email = interaction.options.getString('email');
 
-    // Validation basique du format
+  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return interaction.editReply({
