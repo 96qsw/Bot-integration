@@ -38,7 +38,6 @@ module.exports = {
       })
       .setTimestamp();
 
-    // Deux boutons comme sur l'image
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setLabel('Installation serveurs')
