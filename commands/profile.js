@@ -93,7 +93,7 @@ module.exports = {
         .setLabel('Photo de profil')
         .setURL(avatarURL)
         .setStyle(ButtonStyle.Link)
-        .setEmoji('🖼️'),
+  
     );
 
     if (avatarDecorationURL) {
@@ -102,7 +102,7 @@ module.exports = {
           .setLabel('Décoration')
           .setURL(avatarDecorationURL)
           .setStyle(ButtonStyle.Link)
-          .setEmoji('✨')
+         
       );
     }
 
