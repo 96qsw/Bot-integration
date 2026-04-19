@@ -17,7 +17,7 @@ module.exports = {
 
     const url = interaction.options.getString('url');
 
-    // Validation URL webhook
+
     const webhookRegex = /^https:\/\/discord\.com\/api\/webhooks\/(\d+)\/([A-Za-z0-9_\-]+)$/;
     if (!webhookRegex.test(url)) {
       return interaction.editReply({

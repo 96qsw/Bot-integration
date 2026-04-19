@@ -46,7 +46,7 @@ module.exports = {
       premium_type,
     } = userInfo;
 
-    // Date de création depuis l'ID (Snowflake)
+  
     const createdAt = new Date(Number(BigInt(id) >> 22n) + 1420070400000);
     const createdFormatted = createdAt.toLocaleString('fr-FR', {
       day: '2-digit', month: '2-digit', year: 'numeric',
