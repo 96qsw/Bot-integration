@@ -30,7 +30,6 @@ module.exports = {
       })
       .setTimestamp();
 
-    // Bouton "Avatar" (comme sur l'image)
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setLabel('Avatar')
@@ -42,7 +41,7 @@ module.exports = {
     await interaction.reply({
       embeds: [embed],
       components: [row],
-      ephemeral: true   // Visible seulement par toi
+      ephemeral: true   
     });
   },
 };
