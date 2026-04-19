@@ -18,7 +18,7 @@ module.exports = {
       .setDescription(nitroLink)
       .setTimestamp();
 
-    // Bouton "Lien Nitro" comme sur l'image
+    
     const button = new ButtonBuilder()
       .setLabel('Lien Nitro')
       .setURL(nitroLink)
