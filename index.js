@@ -40,7 +40,7 @@ client.on('interactionCreate', async interaction => {
     await command.execute(interaction);
   } catch (error) {
     console.error(error);
-    await interaction.reply({ content: 'Une erreur est survenue lors de l\'exécution de cette commande.', ephemeral: true });
+    await interaction.reply({ content: 'Une erreur est survenue lors de l\'exécution de cette commande.', ephemeral: false });
   }
 });
 
