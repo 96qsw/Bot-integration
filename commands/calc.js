@@ -20,7 +20,7 @@ module.exports = {
     if (!safeRegex.test(expression)) {
       return interaction.reply({
         content: `\`\`\`diff\n- Expression invalide. Utilise uniquement des chiffres et opérateurs (+, -, *, /, %).\n\`\`\``,
-        ephemeral: true,
+        ephemeral: false,
       });
     }
 
