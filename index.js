@@ -19,7 +19,7 @@ async function deployCommands() {
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = require(filePath);
-    
+     
     if ('data' in command && 'execute' in command) {
       commands.push(command.data.toJSON());
       console.log(`✅ Commande chargée: ${command.data.name}`);
