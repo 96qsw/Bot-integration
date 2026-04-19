@@ -20,12 +20,7 @@ module.exports = {
     ),
 
   async execute(interaction) {
- 
 
-    // Vérifie si le channel existe et est NSFW
-    if (!interaction.channel || !interaction.channel.nsfw) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: true });
-    }
 
     const type = interaction.options.getString('type');
 
