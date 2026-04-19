@@ -24,7 +24,7 @@ module.exports = {
       });
     }
 
-    // Calcul des jours depuis la création du compte
+  
     const createdAt = new Date(Number(BigInt(fetchedUser.id) >> 22n) + 1420070400000);
     const now = new Date();
     const jourDepuis = Math.floor((now - createdAt) / (1000 * 60 * 60 * 24));
@@ -54,7 +54,7 @@ module.exports = {
       ` Jours depuis → ${jourDepuis}`,
     ].join('\n');
 
-    // URLs
+
     const avatarURL = fetchedUser.avatar
       ? `https://cdn.discordapp.com/avatars/${fetchedUser.id}/${fetchedUser.avatar}.png?size=4096`
       : `https://cdn.discordapp.com/embed/avatars/${parseInt(fetchedUser.discriminator || '0') % 5}.png`;
