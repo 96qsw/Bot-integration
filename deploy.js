@@ -27,7 +27,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     console.log(`Déploiement de ${commands.length} commandes globales (User App)...`);
 
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID),   // Global = fonctionne partout (DM + serveurs)
+      Routes.applicationCommands(process.env.CLIENT_ID),  
       { body: commands }
     );
 
