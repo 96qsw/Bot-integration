@@ -18,7 +18,7 @@ module.exports = {
     let decoded;
     try {
       decoded = Buffer.from(texte, 'base64').toString('utf-8');
-      // Vérification que c'est du vrai Base64
+      
       if (Buffer.from(decoded, 'utf-8').toString('base64').replace(/=+$/, '') !== texte.replace(/=+$/, '')) {
         throw new Error('Non valide');
       }
