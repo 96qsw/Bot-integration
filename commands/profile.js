@@ -112,7 +112,7 @@ module.exports = {
           .setLabel('Bannière')
           .setURL(bannerURL)
           .setStyle(ButtonStyle.Link)
-          .setEmoji('🖼️')
+     
       );
     }
 
