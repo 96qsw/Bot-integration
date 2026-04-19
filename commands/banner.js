@@ -17,7 +17,7 @@ module.exports = {
 
     const target = interaction.options.getUser('user');
 
-    // Fetch forcé pour récupérer le banner (non dispo sans fetch)
+   
     const fetchedUser = await target.fetch(true).catch(() => null);
 
     if (!fetchedUser) {
