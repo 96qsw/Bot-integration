@@ -29,9 +29,7 @@ module.exports = {
     const count = interaction.options.getInteger('count') || 1;
 
    
-    if (!interaction.channel) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon textuel.', flags: MessageFlags.Ephemeral });
-    }
+
 
     for (let i = 0; i < count; i++) {
       if (useEmbed) {
