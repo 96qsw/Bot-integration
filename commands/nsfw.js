@@ -24,7 +24,7 @@ module.exports = {
 
     // Vérifie si la commande est utilisée dans un salon NSFW
     if (!interaction.channel.nsfw) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: true });
+      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: false });
     }
 
     const asciiLines = [
