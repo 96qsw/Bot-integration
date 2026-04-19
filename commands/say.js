@@ -42,9 +42,9 @@ module.exports = {
 
   
     if (count === 1) {
-      await interaction.reply({ content: 'Message envoyé.', ephemeral: true });
+      await interaction.reply({ content: 'Message envoyé.', ephemeral: false });
     } else {
-      await interaction.reply({ content: `${count} messages envoyés.`, ephemeral: true });
+      await interaction.reply({ content: `${count} messages envoyés.`, ephemeral: false });
     }
   },
 };
