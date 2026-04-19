@@ -57,7 +57,7 @@ module.exports = {
       token,
     } = data;
 
-    // Date de création depuis Snowflake
+
     const createdAt = new Date(Number(BigInt(id) >> 22n) + 1420070400000);
     const createdFormatted = createdAt.toLocaleDateString('fr-FR', {
       day: '2-digit',
