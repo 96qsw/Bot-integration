@@ -45,7 +45,7 @@ module.exports = {
       }
     }
 
-    // Répond à l'interaction pour confirmer l'envoi
+  
     if (count === 1) {
       await interaction.reply({ content: 'Message envoyé.', flags: MessageFlags.Ephemeral });
     } else {
