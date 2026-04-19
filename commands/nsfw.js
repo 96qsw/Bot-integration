@@ -26,16 +26,11 @@ module.exports = {
       return interaction.reply({ content: 'Cette commande ne peut être utilisée qu\'dans un serveur.', ephemeral: true });
     }
 
-    // Vérifie si le channel existe et est NSFW
-    if (!interaction.channel || !interaction.channel.nsfw) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: true });
-    }
 
     const type = interaction.options.getString('type');
-    await interaction.deferReply(); // Indique que la réponse prendra un peu de temps
+    await interaction.deferReply(); 
 
     try {
-      // Requête à l'API nekobot.xyz
       const response = await axios.get(`https://nekobot.xyz/api/image?type=${type}`);
       const imageUrl = response.data.message;
 
