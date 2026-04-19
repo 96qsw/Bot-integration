@@ -26,7 +26,7 @@ module.exports = {
 
     const serverInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot%20applications.commands&permissions=0`;
 
-    const userInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=applications.commands&integration_type=1`;
+    const userInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}`;
 
     const embed = new EmbedBuilder()
       .setColor(0x2C2F33)
