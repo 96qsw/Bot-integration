@@ -25,7 +25,7 @@ module.exports = {
     } catch {
       return interaction.reply({
         content: `\`\`\`diff\n- Le texte fourni n'est pas un Base64 valide.\n\`\`\``,
-        ephemeral: true,
+        ephemeral: false,
       });
     }
 
@@ -46,7 +46,7 @@ module.exports = {
 
     await interaction.reply({
       embeds: [embed],
-      ephemeral: true,
+      ephemeral: false,
     });
   },
 };
