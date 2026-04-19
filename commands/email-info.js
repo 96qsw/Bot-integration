@@ -33,7 +33,7 @@ module.exports = {
     let dnsValid = false;
 
     try {
-      // Disify : email jetable + domaine
+      
       const [disifyRes, domainRes] = await Promise.all([
         fetch(`https://www.disify.com/api/email/${encodeURIComponent(email)}`),
         fetch(`https://www.disify.com/api/domain/${encodeURIComponent(domain)}`),
