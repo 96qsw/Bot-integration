@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -28,6 +28,11 @@ module.exports = {
     const message = interaction.options.getString('message');
     const count = interaction.options.getInteger('count') || 1;
 
+    // Vérifie si l'interaction provient d'un salon textuel
+    if (!interaction.channel) {
+      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon textuel.', flags: MessageFlags.Ephemeral });
+    }
+
     for (let i = 0; i < count; i++) {
       if (useEmbed) {
         const embed = new EmbedBuilder()
@@ -40,11 +45,11 @@ module.exports = {
       }
     }
 
-  
+    // Répond à l'interaction pour confirmer l'envoi
     if (count === 1) {
-      await interaction.reply({ content: 'Message envoyé.', ephemeral: false });
+      await interaction.reply({ content: 'Message envoyé.', flags: MessageFlags.Ephemeral });
     } else {
-      await interaction.reply({ content: `${count} messages envoyés.`, ephemeral: false });
+      await interaction.reply({ content: `${count} messages envoyés.`, flags: MessageFlags.Ephemeral });
     }
   },
 };
