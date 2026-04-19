@@ -28,7 +28,7 @@ module.exports = {
     const message = interaction.options.getString('message');
     const count = interaction.options.getInteger('count') || 1;
 
-    // Vérifie si l'interaction provient d'un salon textuel
+   
     if (!interaction.channel) {
       return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon textuel.', flags: MessageFlags.Ephemeral });
     }
