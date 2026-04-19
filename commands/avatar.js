@@ -16,7 +16,7 @@ module.exports = {
   async execute(interaction) {
     const target = interaction.options.getUser('user');
 
-    // Récupère l'URL de l'avatar en haute qualité
+   
     const avatarURL = target.displayAvatarURL({ extension: 'png', size: 4096 });
 
     // Génère le QR Code de l'URL de l'avatar
@@ -31,13 +31,13 @@ module.exports = {
 
     const qrAttachment = new AttachmentBuilder(qrCodeBuffer, { name: 'qrcode.png' });
 
-    // Message en style ascii comme sur l'image
+
     const asciiText = `asciiDocVoici l'avatar de ${target.username}.\n(${target.id}) :`;
 
     const embed = new EmbedBuilder()
       .setColor(0x2C2F33)
       .setDescription(`\`\`\`asciidoc\n${asciiText}\n\`\`\``)
-      .setImage(avatarURL)           // Affiche le vrai avatar en grand
+      .setImage(avatarURL)        
       .setFooter({ 
         text: `Today at ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}` 
       })
@@ -54,7 +54,7 @@ module.exports = {
 
     await interaction.reply({
       embeds: [embed],
-      files: [qrAttachment],           // Ajoute le QR Code en haut à droite
+      files: [qrAttachment],           
       components: [row],
       ephemeral: true
     });
