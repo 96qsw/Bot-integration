@@ -28,8 +28,8 @@ module.exports = {
     const message = interaction.options.getString('message');
     const count = interaction.options.getInteger('count') || 1;
 
-   
-
+    // Utilise deferReply pour éviter les timeouts si l'envoi prend du temps
+    await interaction.deferReply({ ephemeral: true });
 
     for (let i = 0; i < count; i++) {
       if (useEmbed) {
@@ -37,17 +37,15 @@ module.exports = {
           .setColor(0x23272A)
           .setDescription(message);
 
-        await interaction.channel.send({ embeds: [embed] });
+        await interaction.followUp({ embeds: [embed], ephemeral: false });
       } else {
-        await interaction.channel.send(message);
+        await interaction.followUp({ content: message, ephemeral: false });
       }
     }
 
-  
-    if (count === 1) {
-      await interaction.reply({ content: 'Message envoyé.', flags: MessageFlags.Ephemeral });
-    } else {
-      await interaction.reply({ content: `${count} messages envoyés.`, flags: MessageFlags.Ephemeral });
-    }
+    // Confirme l'envoi
+    await interaction.editReply({
+      content: `${count} message${count > 1 ? 's' : ''} ${count > 1 ? 'ont été' : 'a été'} envoyé${count > 1 ? 's' : ''}.`,
+    });
   },
 };
