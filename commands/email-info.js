@@ -17,7 +17,7 @@ module.exports = {
 
     const email = interaction.options.getString('email');
 
-    // Validation basique
+    // Validation basique du format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return interaction.editReply({
@@ -25,40 +25,49 @@ module.exports = {
       });
     }
 
-    let data;
+    const domain = email.split('@')[1];
+
+    // Appels API en parallèle
+    let disifyData = null;
+    let mxValid = false;
+    let dnsValid = false;
+
     try {
-      const response = await fetch(`https://api.eva.pingutil.com/email?email=${encodeURIComponent(email)}`);
-      data = await response.json();
+      // Disify : email jetable + domaine
+      const [disifyRes, domainRes] = await Promise.all([
+        fetch(`https://www.disify.com/api/email/${encodeURIComponent(email)}`),
+        fetch(`https://www.disify.com/api/domain/${encodeURIComponent(domain)}`),
+      ]);
+
+      disifyData  = await disifyRes.json();
+      const domainData = await domainRes.json();
+
+      mxValid  = domainData?.mx   ?? false;
+      dnsValid = domainData?.dns  ?? false;
+
     } catch (err) {
       return interaction.editReply({
-        content: `\`\`\`diff\n- Erreur lors de l'analyse de l'email.\n\`\`\``,
+        content: `\`\`\`diff\n- Erreur lors de l'analyse : ${err.message}\n\`\`\``,
       });
     }
 
-    const d = data?.data ?? {};
+    const bool = (val) => val === true ? '✅ Oui' : '❌ Non';
 
-    const bool = (val) => val === true  ? '✅ Oui' : val === false ? '❌ Non' : 'N/A';
-    const val  = (v)   => v !== undefined && v !== null ? String(v) : 'N/A';
+    const isDisposable  = disifyData?.disposable  ?? false;
+    const isFormatValid = disifyData?.format       ?? false;
+    const domainSuggest = disifyData?.domain       ?? 'N/A';
 
     const lines = [
-      ` Prénom trouvé          : ${val(d.first_name) === 'null' ? 'Unknown' : val(d.first_name)}`,
-      ` Domaine suggéré        : ${val(d.suggested_domain) === '' ? 'N/A' : val(d.suggested_domain)}`,
+      ` Format valide          : ${bool(isFormatValid)}`,
+      ` Domaine suggéré        : ${domainSuggest !== domain ? domainSuggest : 'N/A'}`,
       ``,
-      ` Score de fraude        : ${val(d.fraud_score)}`,
-      ` Score global           : ${val(d.score)}`,
-      ` Score SMTP             : ${val(d.smtp_score)}`,
-      ` Score piège à spam     : ${val(d.honeypot_score) === 'null' ? 'none' : val(d.honeypot_score)}`,
+      ` DNS valide             : ${bool(dnsValid)}`,
+      ` MX trouvé              : ${bool(mxValid)}`,
+      ` Email jetable          : ${bool(isDisposable)}`,
+      ` Email suspect          : ${bool(isDisposable)}`,
+      ` Free Email Provider    : ${bool(['gmail.com','hotmail.com','yahoo.com','outlook.com','live.com','icloud.com'].includes(domain))}`,
       ``,
-      ` DNS valide             : ${bool(d.valid_dns)}`,
-      ` Adresse générique      : ${bool(d.generic)}`,
-      ` Email fuitée           : ${bool(d.leaked)}`,
-      ` Abus récent détecté    : ${bool(d.recent_abuse)}`,
-      ` Email suspect          : ${bool(d.suspect)}`,
-      ` Timeout SMTP           : ${bool(d.smtp_timeout)}`,
-      ` Free Email Provider    : ${bool(d.free_email_provider)}`,
-      ` Email jetable          : ${bool(d.disposable)}`,
-      ` MX trouvé              : ${bool(d.mx_found)}`,
-      ` Catch-All              : ${bool(d.catch_all)}`,
+      ` Domaine                : ${domain}`,
     ].join('\n');
 
     const embed = new EmbedBuilder()
@@ -71,8 +80,6 @@ module.exports = {
         text: `Today at ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
       });
 
-    await interaction.editReply({
-      embeds: [embed],
-    });
+    await interaction.editReply({ embeds: [embed] });
   },
 };
