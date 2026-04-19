@@ -35,7 +35,7 @@ module.exports = {
       })
       .setTimestamp();
 
-    // Boutons en bas
+  
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setLabel('Support')
