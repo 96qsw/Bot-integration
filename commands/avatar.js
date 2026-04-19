@@ -18,13 +18,13 @@ module.exports = {
     // URL de l'avatar en haute qualité
     const avatarURL = target.displayAvatarURL({ extension: 'png', size: 4096 });
 
-    // Texte en style asciiDoc comme sur ton image
+
     const asciiText = `asciiDocVoici l'avatar de ${target.username}.\n(${target.id}) :`;
 
     const embed = new EmbedBuilder()
-      .setColor(0x2C2F33)                    // Couleur sombre
-      .setDescription(`\`\`\`asciidoc\n${asciiText}\n\`\`\``)
-      .setImage(avatarURL)                   // Affiche l'avatar en grand
+      .setColor(0x2C2F33)              
+      .setDescription(`\`\`\`\n${asciiText}\n\`\`\``)
+      .setImage(avatarURL)                
       .setFooter({ 
         text: `Today at ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}` 
       })
