@@ -25,7 +25,7 @@ module.exports = {
       .setDescription(`\`\`\`\n${asciiText}\n\`\`\``)
       .setImage(avatarURL)                
       .setFooter({ 
-        text: `Today at ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}` 
+        text: `Today at ${new Date().toLocaleTimeString}` 
       })
       .setTimestamp();
 
