@@ -31,7 +31,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setColor(0x2C2F33)
-        .setTitle(`+ Voici une image NSFW ${type}`)
+        .setTitle(`\`+ Voici une image NSFW ${type}`)
         .setImage(imageUrl)
         .setFooter({
           text: `C'est pas bien tout ça, je te pensais pas comme ça en vrai, je te surveille tkt tu vas pas t’échapper • ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
