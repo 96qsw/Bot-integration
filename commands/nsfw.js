@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios'); // Assure-toi d'installer axios avec `npm install axios`
+const axios = require('axios'); 
 
 module.exports = {
   data: new SlashCommandBuilder()
