@@ -13,7 +13,7 @@ module.exports = {
     .setIntegrationTypes(0, 1),
 
   async execute(interaction) {
-    await interaction.deferReply({ ephemeral: true });
+    await interaction.deferReply({ ephemeral: false });
 
     const url = interaction.options.getString('url');
 
