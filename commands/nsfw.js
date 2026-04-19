@@ -20,10 +20,7 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    // Vérifie si l'interaction provient d'un serveur
-    if (!interaction.guild) {
-      return interaction.reply({ content: 'Cette commande ne peut être utilisée qu\'dans un serveur.', ephemeral: true });
-    }
+ 
 
     // Vérifie si le channel existe et est NSFW
     if (!interaction.channel || !interaction.channel.nsfw) {
