@@ -33,7 +33,7 @@ module.exports = {
       .setColor(0x2C2F33)
       .setDescription(`\`\`\`fix\n${asciiLines}\n\`\`\``)
       .setFooter({
-        text: `Aujourd'hui à ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
+        text: `'est pas bien tout ça, je te pensais pas comme ça en vrai, je te surveille tkt tu vas pas t’échapper•${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
       });
 
     await interaction.reply({ embeds: [embed] });
