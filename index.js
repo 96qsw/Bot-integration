@@ -101,7 +101,6 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-// ========== LANCEMENT ==========
 async function start() {
   // 1. Déployer les commandes
   const deployed = await deployCommands();
