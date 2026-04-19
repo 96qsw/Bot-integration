@@ -15,7 +15,7 @@ module.exports = {
   async execute(interaction) {
     const expression = interaction.options.getString('expression');
 
-    // Sécurisation : uniquement chiffres et opérateurs math
+  
     const safeRegex = /^[0-9+\-*/.() %^]+$/;
     if (!safeRegex.test(expression)) {
       return interaction.reply({
