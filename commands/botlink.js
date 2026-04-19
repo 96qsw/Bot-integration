@@ -30,7 +30,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(0x2C2F33)
-      .setTitle(`= Liens d'invitation pour ${target.username}#${target.discriminator || '0000'}`)
+      .setTitle(`\`= Liens d'invitation pour ${target.username}#${target.discriminator || '0000'}`)
       .setDescription(`(${target.id})`)
       .setFooter({ 
         text: `Today at ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}` 
