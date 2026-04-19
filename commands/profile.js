@@ -88,7 +88,7 @@ module.exports = {
         .setLabel('Utilisateur')
         .setURL(userURL)
         .setStyle(ButtonStyle.Link)
-        
+        .setEmoji('👤'),
       new ButtonBuilder()
         .setLabel('Photo de profil')
         .setURL(avatarURL)
