@@ -20,8 +20,17 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    const type = interaction.options.getString('type');
+    // Vérifie si l'interaction provient d'un serveur
+    if (!interaction.guild) {
+      return interaction.reply({ content: 'Cette commande ne peut être utilisée qu\'dans un serveur.', ephemeral: true });
+    }
 
+    // Vérifie si le channel existe et est NSFW
+    if (!interaction.channel || !interaction.channel.nsfw) {
+      return interaction.reply({ content: 'Cette commande ne peut être utilisée que dans un salon NSFW.', ephemeral: true });
+    }
+
+    const type = interaction.options.getString('type');
 
     const asciiLines = [
       `= Contenu NSFW de type : ${type}`,
@@ -32,7 +41,7 @@ module.exports = {
       .setColor(0x2C2F33)
       .setDescription(`\`\`\`fix\n${asciiLines}\n\`\`\``)
       .setFooter({
-        text: `'est pas bien tout ça, je te pensais pas comme ça en vrai, je te surveille tkt tu vas pas t’échapper • ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
+        text: `Aujourd'hui à ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`,
       });
 
     await interaction.reply({ embeds: [embed] });
