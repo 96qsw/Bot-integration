@@ -24,7 +24,7 @@ module.exports = {
       });
     }
 
-    const serverInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot%20applications.commands&permissions=0`;
+    const serverInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}&permissions=8&integration_type=1&scope=bot+applications.commands`;
 
     const userInstallLink = `https://discord.com/oauth2/authorize?client_id=${clientId}`;
 
