@@ -54,7 +54,7 @@ module.exports = {
       channel_id,
       user,
       application_id,
-      token,
+      token, 
     } = data;
 
 
