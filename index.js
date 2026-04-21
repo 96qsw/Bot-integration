@@ -98,14 +98,14 @@ client.on('interactionCreate', async interaction => {
 });
 
 async function start() {
-  // 1. Déployer les commandes
+
   const deployed = await deployCommands();
   
   if (!deployed) {
     console.log('⚠️ Continuons quand même avec le bot...');
   }
   
-  // 2. Lancer le bot
+
   try {
     await client.login(process.env.TOKEN);
   } catch (error) {
